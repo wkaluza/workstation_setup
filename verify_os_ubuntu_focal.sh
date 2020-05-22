@@ -19,7 +19,7 @@ function main() {
   git --version >/dev/null
   pipenv --version >/dev/null
   docker --version >/dev/null
-  docker run hello-world >/dev/null
+  docker run --rm hello-world >/dev/null
   cmake --version >/dev/null
   clang-9 --version >/dev/null
   clang++-9 --version >/dev/null
