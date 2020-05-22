@@ -125,6 +125,13 @@ function install_yubico_utilities() {
     yubikey-personalization-gui >/dev/null
 }
 
+function install_tex_live() {
+  print_trace
+
+  sudo apt-get install -y \
+    texlive-full
+}
+
 function configure_bash() {
   print_trace
 
@@ -203,6 +210,7 @@ function main() {
   install_cmake
   install_chrome
   install_yubico_utilities
+  install_tex_live
 
   configure_bash
   configure_git "48E83769C79B5956A499ACB1CB87CBDEBBF89303"

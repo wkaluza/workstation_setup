@@ -28,6 +28,9 @@ function main() {
   clang-format-9 --version >/dev/null
   clang-tidy-9 --version >/dev/null
 
+  pdflatex --version
+  xelatex --version
+
   ensure_rng_tools_daemon_is_running
   verify_jetbrains_toolbox
 
