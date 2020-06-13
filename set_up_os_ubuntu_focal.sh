@@ -16,6 +16,7 @@ function install_basics() {
     vim \
     scdaemon \
     rng-tools \
+    vlc \
     git >/dev/null
 
   sudo mkdir -p /opt/jetbrains
