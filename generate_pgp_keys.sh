@@ -73,7 +73,6 @@ function generate_configs() {
     envsubst <"${primary_key_config_template}" >"${primary_key_config}"
   comment="${key_comment}" \
     envsubst <"${revocation_certificate_config_template}" >"${revocation_certificate_config}"
-
 }
 
 function safety_checks() {
