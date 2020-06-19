@@ -133,6 +133,23 @@ function install_tex_live() {
     texlive-full
 }
 
+function install_golang() {
+  print_trace
+
+  local go_archive="go.tar.gz"
+  local download_url="https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz"
+  # Must match PATH update in bashrc_append.sh
+  local target_dir="/usr/local"
+
+  curl -fsSL --output "./${go_archive}" "${download_url}"
+  sudo mv "./${go_archive}" "${target_dir}"
+
+  pushd "${target_dir}"
+  sudo tar xzvf "./${go_archive}"
+  sudo rm "./${go_archive}"
+  popd
+}
+
 function configure_bash() {
   print_trace
 
@@ -212,6 +229,7 @@ function main() {
   install_chrome
   install_yubico_utilities
   install_tex_live
+  install_golang
 
   configure_bash
   configure_git "48E83769C79B5956A499ACB1CB87CBDEBBF89303"

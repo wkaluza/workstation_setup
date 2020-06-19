@@ -27,6 +27,7 @@ function main() {
   g++-8 --version >/dev/null
   clang-format-9 --version >/dev/null
   clang-tidy-9 --version >/dev/null
+  go version >/dev/null
 
   pdflatex --version
   xelatex --version

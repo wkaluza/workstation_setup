@@ -6,3 +6,4 @@ HISTSIZE=1000000
 HISTCONTROL=ignorespace:erasedups
 PROMPT_COMMAND='history -n ; history -a'
 alias python=python3
+PATH=$PATH:/usr/local/go/bin
