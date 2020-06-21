@@ -17,6 +17,7 @@ function install_basics() {
     scdaemon \
     rng-tools \
     vlc \
+    inkscape \
     git >/dev/null
 
   sudo mkdir -p /opt/jetbrains
