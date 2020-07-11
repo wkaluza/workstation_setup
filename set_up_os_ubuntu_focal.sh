@@ -151,6 +151,23 @@ function install_golang() {
   popd
 }
 
+function install_nodejs() {
+  print_trace
+
+  local nvm_install_script="install.sh"
+
+  curl -fsSL \
+    --output "./${nvm_install_script}" \
+    https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh
+
+  chmod u+x "${nvm_install_script}"
+  "./${nvm_install_script}"
+  rm "./${nvm_install_script}"
+
+  nvm install --lts --latest-npm
+  nvm cache clear
+}
+
 function configure_bash() {
   print_trace
 
@@ -231,6 +248,7 @@ function main() {
   install_yubico_utilities
   install_tex_live
   install_golang
+  install_nodejs
 
   configure_bash
   configure_git "48E83769C79B5956A499ACB1CB87CBDEBBF89303"

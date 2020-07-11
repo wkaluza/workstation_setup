@@ -28,6 +28,9 @@ function main() {
   clang-format-9 --version >/dev/null
   clang-tidy-9 --version >/dev/null
   go version >/dev/null
+  nvm --version >/dev/null
+  npm --version >/dev/null
+  node --version >/dev/null
 
   pdflatex --version
   xelatex --version
