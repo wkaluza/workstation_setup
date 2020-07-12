@@ -158,7 +158,7 @@ function install_nodejs() {
 
   curl -fsSL \
     --output "./${nvm_install_script}" \
-    https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh
+    https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh
 
   chmod u+x "${nvm_install_script}"
   "./${nvm_install_script}"
