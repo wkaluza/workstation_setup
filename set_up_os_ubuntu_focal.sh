@@ -203,6 +203,8 @@ function configure_git() {
 
   git config --global commit.gpgSign true
   git config --global merge.verifySignatures true
+
+  git config --global rerere.enabled true
 }
 
 function configure_gpg() {
