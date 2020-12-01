@@ -5,7 +5,7 @@ set -euo pipefail
 source "./common.sh"
 
 function verify_jetbrains_toolbox() {
-  local toolbox_app_path="/opt/jetbrains/toolbox"
+  local toolbox_app_path="/opt/jetbrains/jetbrains-toolbox"
 
   if ! test -x "$toolbox_app_path"; then
     log_error "Could not find executable at $toolbox_app_path . Install the JetBrains Toolbox App"

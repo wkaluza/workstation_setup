@@ -26,8 +26,32 @@ function install_basics() {
     vlc \
     inkscape \
     git >/dev/null
+}
 
-  sudo mkdir -p /opt/jetbrains
+function install_jetbrains_toolbox() {
+  print_trace
+
+  local tar_gz_path="$1"
+
+  local extract_target_name
+  extract_target_name="$(basename "${tar_gz_path}" ".tar.gz")"
+  local install_destination="/opt/jetbrains/jetbrains-toolbox"
+
+  if ! test -x "${install_destination}"; then
+    sudo mkdir -p "$(dirname "${install_destination}")"
+
+    pushd "$(dirname "${tar_gz_path}")" >/dev/null
+    tar -xzf "${tar_gz_path}"
+    sudo cp \
+      "./${extract_target_name}/$(basename "${install_destination}")" \
+      "${install_destination}"
+
+    sudo rm -rf "${tar_gz_path}"
+    sudo rm -rf "./${extract_target_name}"
+    popd >/dev/null
+  else
+    echo "Toolbox already installed at ${install_destination}"
+  fi
 }
 
 function install_python() {
@@ -248,9 +272,12 @@ function clean_up() {
 }
 
 function main() {
+  local jetbrains_toolbox_tar_gz="$1"
+
   ensure_not_sudo
 
   install_basics
+  install_jetbrains_toolbox "${jetbrains_toolbox_tar_gz}"
   install_python
   install_docker
   install_cpp_toolchains
@@ -269,4 +296,4 @@ function main() {
 }
 
 # Entry point
-main
+main "$1"
