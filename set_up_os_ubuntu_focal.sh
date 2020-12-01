@@ -4,6 +4,13 @@ set -euo pipefail
 
 source "./common.sh"
 
+function ensure_not_sudo() {
+  if test "0" -eq "$(id -u)"; then
+    echo Do not run this as root
+    exit 1
+  fi
+}
+
 function install_basics() {
   print_trace
 
@@ -241,6 +248,8 @@ function clean_up() {
 }
 
 function main() {
+  ensure_not_sudo
+
   install_basics
   install_python
   install_docker
