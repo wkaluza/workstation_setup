@@ -142,7 +142,7 @@ function install_chrome() {
   else
     wget --output-document ./chrome.deb \
       https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-    sudo dpkg --install ./chrome.deb
+    sudo dpkg --install ./chrome.deb >/dev/null
     rm ./chrome.deb
   fi
 }
