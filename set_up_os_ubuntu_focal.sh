@@ -173,13 +173,17 @@ function install_golang() {
   # Must match PATH update in bashrc_append.sh
   local target_dir="/usr/local"
 
-  curl -fsSL --output "./${go_archive}" "${download_url}"
-  sudo mv "./${go_archive}" "${target_dir}"
+  if ! test -d "${target_dir}/go"; then
+    curl -fsSL --output "./${go_archive}" "${download_url}"
+    sudo mv "./${go_archive}" "${target_dir}"
 
-  pushd "${target_dir}"
-  sudo tar xzvf "./${go_archive}"
-  sudo rm "./${go_archive}"
-  popd
+    pushd "${target_dir}"
+    sudo tar -xzf "./${go_archive}"
+    sudo rm "./${go_archive}"
+    popd
+  else
+    echo "golang is already installed"
+  fi
 }
 
 function install_nodejs() {
