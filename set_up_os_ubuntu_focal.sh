@@ -169,7 +169,7 @@ function install_golang() {
   print_trace
 
   local go_archive="go.tar.gz"
-  local go_version="1.14.4"
+  local go_version="1.15.5"
   local download_url="https://dl.google.com/go/go${go_version}.linux-amd64.tar.gz"
   # Must match PATH update in bashrc_append.sh
   local target_dir="/usr/local"
