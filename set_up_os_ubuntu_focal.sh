@@ -71,7 +71,7 @@ function install_python() {
 function install_docker() {
   print_trace
 
-  if ! docker run --rm hello-world >/dev/null; then
+  if ! docker --version >/dev/null; then
     log_info "Installing docker ..."
 
     sudo apt-get install -y \
