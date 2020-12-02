@@ -162,7 +162,7 @@ function install_tex_live() {
   print_trace
 
   sudo apt-get install -y \
-    texlive-full
+    texlive-full >/dev/null
 }
 
 function install_golang() {
