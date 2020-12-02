@@ -31,8 +31,8 @@ function main() {
   npm --version >/dev/null
   node --version >/dev/null
 
-  pdflatex --version
-  xelatex --version
+  pdflatex --version >/dev/null
+  xelatex --version >/dev/null
 
   ensure_rng_tools_daemon_is_running
   verify_jetbrains_toolbox
