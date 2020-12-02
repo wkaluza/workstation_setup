@@ -261,7 +261,11 @@ function press_any_key_to() {
 function clean_up() {
   print_trace
 
+  sudo apt-get update >/dev/null
+  sudo apt-get upgrade -y >/dev/null
   sudo apt-get autoremove -y >/dev/null
+  sudo apt-get clean >/dev/null
+
   press_any_key_to "reboot"
   sudo reboot
 }
