@@ -185,18 +185,8 @@ function install_golang() {
 function install_nodejs() {
   print_trace
 
-  local nvm_install_script="install.sh"
-
-  curl -fsSL \
-    --output "./${nvm_install_script}" \
-    https://raw.githubusercontent.com/creationix/nvm/v0.35.3/install.sh
-
-  chmod u+x "${nvm_install_script}"
-  "./${nvm_install_script}"
-  rm "./${nvm_install_script}"
-
-  nvm install --lts --latest-npm
-  nvm cache clear
+  curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+  sudo apt-get install -y nodejs >/dev/null
 }
 
 function configure_bash() {
