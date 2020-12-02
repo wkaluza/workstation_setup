@@ -15,7 +15,7 @@ function install_basics() {
   print_trace
 
   sudo apt-get update >/dev/null
-  sudo apt-get upgrade -y >/dev/null
+  sudo apt-get upgrade --with-new-pkgs -y >/dev/null
   sudo apt-get install -y \
     curl \
     wget \
@@ -262,7 +262,7 @@ function clean_up() {
   print_trace
 
   sudo apt-get update >/dev/null
-  sudo apt-get upgrade -y >/dev/null
+  sudo apt-get upgrade --with-new-pkgs -y >/dev/null
   sudo apt-get autoremove -y >/dev/null
   sudo apt-get clean >/dev/null
 
