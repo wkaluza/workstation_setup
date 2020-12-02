@@ -25,6 +25,7 @@ function install_basics() {
     rng-tools \
     vlc \
     inkscape \
+    dislocker \
     git >/dev/null
 }
 
