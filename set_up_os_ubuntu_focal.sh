@@ -25,6 +25,8 @@ function install_basics() {
     rng-tools \
     vlc \
     inkscape \
+    libcanberra-gtk-module \
+    libcanberra-gtk3-module \
     dislocker \
     git >/dev/null
 }
