@@ -24,6 +24,7 @@ function install_basics() {
     scdaemon \
     rng-tools \
     vlc \
+    jq \
     inkscape \
     libcanberra-gtk-module \
     libcanberra-gtk3-module \
