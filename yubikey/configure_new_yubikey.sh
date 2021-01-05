@@ -112,7 +112,7 @@ function main() {
   gpg --expert --edit-card
 
   log_info "Transfer keys to card"
-  gpg --expert --edit-key "w-kaluza@tlen.pl"
+  gpg --expert --edit-key "wkaluza@protonmail.com"
 }
 
 # Entry point

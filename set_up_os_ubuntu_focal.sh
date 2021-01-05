@@ -219,7 +219,7 @@ function configure_git() {
 
   print_trace
 
-  git config --global user.email "w-kaluza@tlen.pl"
+  git config --global user.email "wkaluza@protonmail.com"
   git config --global user.name "Wojciech Kaluza"
 
   git config --global rebase.autosquash true
@@ -242,7 +242,7 @@ function configure_gpg() {
 
   local gpg_home="$HOME/.gnupg"
   local gpg_config_dir="gpg_config"
-  local email="w-kaluza@tlen.pl"
+  local email="wkaluza@protonmail.com"
   local trust_config="pgp_key_generation/ultimate_trust_config"
 
   mkdir -p "$gpg_home"

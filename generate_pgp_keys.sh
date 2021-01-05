@@ -108,7 +108,7 @@ function main() {
   local config_dir="./pgp_key_generation"
 
   local name="Wojciech Kaluza"
-  local email="w-kaluza@tlen.pl"
+  local email="wkaluza@protonmail.com"
   local today_yymmdd
   today_yymmdd="$(date +'%Y%m%d')"
   local prefix="engineering"

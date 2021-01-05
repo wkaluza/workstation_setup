@@ -10,7 +10,7 @@ function main() {
 
   local algorithm="ed25519"
   local rounds=1000
-  local email="w-kaluza@tlen.pl"
+  local email="wkaluza@protonmail.com"
   local today_yymmdd
   today_yymmdd="$(date +'%Y%m%d')"
   local purpose="engineering"
