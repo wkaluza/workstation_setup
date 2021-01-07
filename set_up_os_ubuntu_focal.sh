@@ -242,15 +242,13 @@ function configure_gpg() {
 
   local gpg_home="$HOME/.gnupg"
   local gpg_config_dir="gpg_config"
-  local email="wkaluza@protonmail.com"
-  local trust_config="pgp_key_generation/ultimate_trust_config"
 
   mkdir -p "$gpg_home"
   cp "./${gpg_config_dir}/gpg.conf" "$gpg_home"
   cp "./${gpg_config_dir}/gpg-agent.conf" "$gpg_home"
 
   gpg --import "./${gpg_config_dir}/engineering_pgp_primary_key_20200507.pub"
-  gpg --expert --command-file "./${trust_config}" --edit-key "${email}"
+  cat "./${gpg_config_dir}/ownertrust" | gpg --import-ownertrust
 
   # Import GitHub's public key
   curl -fsSL https://github.com/web-flow.gpg | gpg --import
