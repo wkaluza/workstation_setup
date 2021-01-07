@@ -215,9 +215,9 @@ function configure_bash() {
 }
 
 function configure_git() {
-  local pgp_primary_key_fingerprint="$1"
-
   print_trace
+
+  local pgp_primary_key_fingerprint="$1"
 
   git config --global user.email "wkaluza@protonmail.com"
   git config --global user.name "Wojciech Kaluza"
