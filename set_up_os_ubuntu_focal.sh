@@ -215,7 +215,7 @@ function configure_bash() {
 }
 
 function configure_git() {
-  local pgp_signing_key_fingerprint="$1"
+  local pgp_primary_key_fingerprint="$1"
 
   print_trace
 
@@ -228,7 +228,7 @@ function configure_git() {
 
   git config --global log.showSignature true
 
-  git config --global user.signingKey "${pgp_signing_key_fingerprint}"
+  git config --global user.signingKey "${pgp_primary_key_fingerprint}"
   git config --global gpg.program gpg
 
   git config --global commit.gpgSign true
@@ -293,7 +293,7 @@ function main() {
   install_nodejs
 
   configure_bash
-  configure_git "48E83769C79B5956A499ACB1CB87CBDEBBF89303"
+  configure_git "655032BAB18D09A2D3239451F24BE8916149A3C4"
   configure_gpg
 
   clean_up
