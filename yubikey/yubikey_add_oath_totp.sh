@@ -17,6 +17,8 @@ function add_yubikey_oath_totp_credential() {
     --force \
     "${account_id}" \
     "${secret}"
+
+  sleep 1
 }
 
 function main() {

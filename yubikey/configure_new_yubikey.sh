@@ -16,16 +16,25 @@ function set_app_security() {
   local default_mgmt_key="010203040506070801020304050607080102030405060708"
 
   ykman fido set-pin --new-pin "${pin}"
+  sleep 1
+
   ykman oath set-password --new-password "${pin}"
+  sleep 1
+
   ykman piv change-pin \
     --new-pin "${pin}" \
     --pin "${default_pin}"
+  sleep 1
+
   ykman piv change-puk \
     --new-puk "${puk}" \
     --puk "${default_puk}"
+  sleep 1
+
   ykman piv change-management-key \
     --new-management-key "${piv_mgmt_key}" \
     --management-key "${default_mgmt_key}"
+  sleep 1
 }
 
 function reset_yubikey_apps() {
