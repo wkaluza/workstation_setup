@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-function main() {
+function add_yubikey_oath_totp_credential() {
   local issuer="$1"
   local secret="$2"
   local account_id="$3"
@@ -17,6 +17,17 @@ function main() {
     --force \
     "${account_id}" \
     "${secret}"
+}
+
+function main() {
+  local issuer="$1"
+  local secret="$2"
+  local account_id="$3"
+
+  add_yubikey_oath_totp_credential \
+    "${issuer}" \
+    "${secret}" \
+    "${account_id}"
 }
 
 # Entry point
