@@ -250,7 +250,8 @@ function configure_gpg() {
   cp "./${gpg_config_dir}/gpg-agent.conf" "$gpg_home"
 
   gpg --receive-keys "${pgp_primary_key_fingerprint}"
-  cat "./${gpg_config_dir}/ownertrust" | gpg --import-ownertrust
+  # Set trust to ultimate
+  echo "${pgp_primary_key_fingerprint}:6:" | gpg --import-ownertrust
 
   # Import GitHub's public key
   gpg --fetch-keys "https://github.com/web-flow.gpg"
