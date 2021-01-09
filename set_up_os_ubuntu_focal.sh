@@ -253,7 +253,7 @@ function configure_gpg() {
   cat "./${gpg_config_dir}/ownertrust" | gpg --import-ownertrust
 
   # Import GitHub's public key
-  curl -fsSL https://github.com/web-flow.gpg | gpg --import
+  gpg --fetch-keys "https://github.com/web-flow.gpg"
 }
 
 function press_any_key_to() {
