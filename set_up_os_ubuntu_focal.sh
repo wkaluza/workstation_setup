@@ -240,6 +240,8 @@ function configure_git() {
 function configure_gpg() {
   print_trace
 
+  local pgp_primary_key_fingerprint="$1"
+
   local gpg_home="$HOME/.gnupg"
   local gpg_config_dir="gpg_config"
 
@@ -247,7 +249,7 @@ function configure_gpg() {
   cp "./${gpg_config_dir}/gpg.conf" "$gpg_home"
   cp "./${gpg_config_dir}/gpg-agent.conf" "$gpg_home"
 
-  gpg --import "./${gpg_config_dir}/engineering_pgp_primary_key_20200507.pub"
+  gpg --receive-keys "${pgp_primary_key_fingerprint}"
   cat "./${gpg_config_dir}/ownertrust" | gpg --import-ownertrust
 
   # Import GitHub's public key
@@ -275,6 +277,7 @@ function clean_up() {
 
 function main() {
   local jetbrains_toolbox_tar_gz="$1"
+  local pgp_primary_key_fingerprint="655032BAB18D09A2D3239451F24BE8916149A3C4"
 
   ensure_not_sudo
 
@@ -291,8 +294,8 @@ function main() {
   install_nodejs
 
   configure_bash
-  configure_git "655032BAB18D09A2D3239451F24BE8916149A3C4"
-  configure_gpg
+  configure_git "${pgp_primary_key_fingerprint}"
+  configure_gpg "${pgp_primary_key_fingerprint}"
 
   clean_up
 }
