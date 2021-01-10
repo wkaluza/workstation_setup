@@ -68,30 +68,28 @@ function reset_yubikey_apps() {
 function adjust_config() {
   print_trace
 
-  local config_lock_code="$1"
-
   log_info "Enable NFC for all apps"
-  ykman config nfc --force --lock-code "${config_lock_code}" --enable-all
+  ykman config nfc --force --enable-all
   sleep 1
 
   log_info "Enable USB for all apps"
-  ykman config usb --force --lock-code "${config_lock_code}" --enable-all
+  ykman config usb --force --enable-all
   sleep 1
 
   log_info "Enable USB touch-to-eject"
-  ykman config usb --force --lock-code "${config_lock_code}" --touch-eject
+  ykman config usb --force --touch-eject
   sleep 1
 
   log_info "Set USB auto-eject timeout"
-  ykman config usb --force --lock-code "${config_lock_code}" --autoeject-timeout 14400
+  ykman config usb --force --autoeject-timeout 14400
   sleep 1
 
   log_info "Set USB challenge-response timeout"
-  ykman config usb --force --lock-code "${config_lock_code}" --chalresp-timeout 30
+  ykman config usb --force --chalresp-timeout 30
   sleep 1
 }
 
-function set_config_lock_code() {
+function ensure_unlocked_config() {
   print_trace
 
   local config_lock_code="$1"
@@ -101,6 +99,12 @@ function set_config_lock_code() {
     ykman config set-lock-code --clear >/dev/null
   fi
   sleep 1
+}
+
+function lock_config() {
+  print_trace
+
+  local config_lock_code="$1"
 
   ykman config set-lock-code --new-lock-code "${config_lock_code}"
   sleep 1
@@ -113,9 +117,9 @@ function main() {
   local piv_mgmt_key="$4"
 
   reset_yubikey_apps
-  set_config_lock_code "${config_lock_code}"
-  adjust_config "${config_lock_code}"
-  set_app_security "${pin}" "${puk}" "${piv_mgmt_key}"
+  ensure_unlocked_config "${config_lock_code}"
+  adjust_config
+  lock_config "${config_lock_code}"
 
   log_info "Set PIN, admin PIN and Reset Code"
   gpg --expert --edit-card
