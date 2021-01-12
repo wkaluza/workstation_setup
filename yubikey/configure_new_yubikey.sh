@@ -120,12 +120,6 @@ function main() {
   ensure_unlocked_config "${config_lock_code}"
   adjust_config
   lock_config "${config_lock_code}"
-
-  log_info "Set PIN, admin PIN and Reset Code"
-  gpg --expert --edit-card
-
-  log_info "Transfer keys to card"
-  gpg --expert --edit-key "wkaluza@protonmail.com"
 }
 
 # Entry point
